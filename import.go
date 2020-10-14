@@ -5,10 +5,12 @@ import (
 	//"io"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	//"encoding/json"
 	"flag"
 	"fmt"
 	"regexp"
+	"strings"
 )
 
 var mapFileString, inputFileString *string
@@ -34,6 +36,7 @@ type vocab struct {
 	gender string
 }
 
+var wordMap map[string]string
 var englishMap = make(map[string][]vocab, 0)
 var spanishMap = make(map[string][]vocab, 0)
 
@@ -67,9 +70,18 @@ func main() {
 	if allWords == nil {
 		panic("No words in input")
 	}
+	wordMap = make(map[string]string, len(allWords))
 	for _, val := range allWords {
+		wordMap[strings.TrimSpace(val)] = ""
 	}
-
+	for val, _ := range wordMap {
+		fmt.Printf("Translating %s: ", val)
+		cmd := exec.Command("./trans", "-from", "es", "-brief", val)
+		output, err := cmd.Output()
+		check(err)
+		wordMap[val] = string(output)
+		fmt.Printf(" %s\n", string(output))
+	}
 	// CommandLine dictionary to a) check against map, install answer of necessary
 	// Bias for spanish
 }
