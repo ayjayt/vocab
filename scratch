@@ -1,0 +1,23 @@
+
+	var mapFileString = flag.String("map", "", "Specify the file you use to keep track of words you know")
+
+	// Opening and decoding a map file
+	mapFile, err := os.Open(*mapFileString)
+	check(err)
+	/*
+	dec := json.NewDecoder(mapFile)
+	for {
+		if err := dec.Decode(&vocabMap); err == io.EOF {
+			break
+		} else if err != nil {
+			panic(err)
+		}
+	}
+	*/
+
+// How will this actually look @ end of times.
+// Deck, Spanish Form
+// Spanish Form, English Translation, Note, Gender, Base(string), Learning Meta
+// Base, English Translation, Note, Gender, Form, Form, Form, Form, Form, Form, Form, Form, Form, Form, Form
+// We can construct decks from the base, from the applied form, and we can randomize forms
+
