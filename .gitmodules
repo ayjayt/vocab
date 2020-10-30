@@ -1,6 +1,3 @@
 [submodule "hunspell_dictionaries"]
 	path = resources/hunspell_dictionaries
 	url = https://chromium.googlesource.com/chromium/deps/hunspell_dictionaries
-[submodule "dictionaries"]
-	path = resources/dictionaries
-	url = https://github.com/wooorm/dictionaries
