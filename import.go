@@ -176,6 +176,10 @@ func main() {
 		}
 	}
 	fmt.Printf("Whole text sanitized: \n%v\n", wholeTextSanitized)
+	wholeTextSanitizedForOutput := strings.Join(wholeTextSanitized, " ")
+	err = ioutil.WriteFile("output.txt",[]byte(wholeTextSanitizedForOutput),0644)
+	check(err)
+
 
 	// Iterate over words
 	for index, _ := range wordMapRaw {
